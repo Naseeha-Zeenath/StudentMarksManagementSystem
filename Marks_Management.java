@@ -1,53 +1,63 @@
 import java.util.*;
-class Marks_Management{
-	public static String[] id = new String[1];
-	public static String[] name = new String[1];
-	public static int[] prfMarks = new int[1];
-	public static int[] dbmsMarks = new int[1];
+class Student{
+	String id;
+	String name;
+	int prfMarks;
+	int dbmsMarks;	
 	
-	public static void addStudent(){
+	public void print(){
+		System.out.println(id+"\t"+name+"\t"+prfMarks+"\t"+dbmsMarks);
+	}
+}
+
+class Marks_Management{
+	public static void main(String args[]){
+		
+		Student[] st= new Student[1];
+		int i = st.length-1;
+		
 		while(true){
-			Scanner input = new Scanner(System.in);
-			System.out.print("Enter Id : ");
-			id[id.length-1]= input.nextLine(); 
+		
+			st[i] = new Student();
 			
-			System.out.print("Enter Name : ");
-			name[name.length-1]= input.nextLine(); 
+			Scanner input=new Scanner(System.in);
+			System.out.print("Input Student Id : ");
+			st[i].id=input.nextLine(); 
 			
-			System.out.print("Enter PRF Marks : ");
-			prfMarks[prfMarks.length-1]= input.nextInt(); 
+			System.out.print("Input Student Name : ");
+			st[i].name=input.nextLine();
 			
-			System.out.print("Enter DBMS Marks : ");
-			dbmsMarks[dbmsMarks.length-1]= input.nextInt(); 
+			System.out.print("Input PRF  Marks : ");
+			st[i].prfMarks=input.nextInt();
 			
-			if(prfMarks[prfMarks.length-1]<0 || dbmsMarks[dbmsMarks.length-1]<0){
-				break;
+			if(st[i].prfMarks<0){
+					break;
 			}
 			
-			ingrimentArray();
-		}
+			System.out.print("Input DBMS Marks : ");
+			st[i].dbmsMarks=input.nextInt();
+			
+			if(st[i].dbmsMarks<0){
+					break;
+			}
+			
+			Student[] temp = new Student[st.length+1];
+			
+			for(int j=0; j<st.length; j++){
+				temp[j] = st[j];
+			}
+			
+			st = temp;
+			
+			i++;
 
-	}
+		}
 	
-	public static void ingrimentArray(){
-		String[] temp_id = new String[id.length];
-		String[] temp_name = new String[name.length];
-		int[] temp_prfMarks = new int[prfMarks.length];
-		int[] temp_dbmsMarks = new int[dbmsMarks.length];
-		
-		temp_id = id;
-		temp_name = name;
-		temp_prfMarks = temp_prfMarks;
-		temp_dbmsMarks = temp_dbmsMarks;
-		
-		id = temp_id;
-		name = temp_name;
-		prfMarks = temp_prfMarks;
-		dbmsMarks = temp_dbmsMarks;
-		
-	}
-	
-	public static void main(String args[]){
-		addStudent();
-	}
-} 
+        System.out.println("\nID\tName\tPRF\tDBMS");
+        System.out.println("================================");
+        
+		for(Student s:st){
+				s.print();
+			}
+		}	
+}
