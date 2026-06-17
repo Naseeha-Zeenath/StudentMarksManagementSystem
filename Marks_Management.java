@@ -53,7 +53,9 @@ class Marks_Management{
 		}
 		st = temp;
 	}
-	public static void deleteStudent(){
+	public static void deleteStudent(){		
+		System.out.println("\nDelete Student ");
+		System.out.println("=================");
 		int value =searchStudent();
 		
 		if(value >= 0){
@@ -69,14 +71,6 @@ class Marks_Management{
 			st = temp;
 		
 		}
-		
-		System.out.print("============================\n");
-		
-		for(int i=0; i<st.length; i++){
-			System.out.println(st[i].id+"\t"+st[i].name+"\t"+st[i].prfMarks+"\t"+st[i].dbmsMarks);
-		}
-		
-		
 	}
 	
 	public static int searchStudent(){
@@ -111,6 +105,42 @@ class Marks_Management{
 		return value;
 	}
 	
+	public static void updateStudent(){
+		System.out.println("\nUpdate Student");
+		System.out.println("=================");
+		int value = searchStudent();
+		Scanner input = new Scanner(System.in);
+		
+		if(value>= 0){
+			System.out.println("Enter what do you want to update \n 1) Id \n 2) Name \n 3) PRF Marks \n 4) DBMS Marks");
+			System.out.print("Enter Option : ");
+			int option = input.nextInt();
+			
+			if(option == 1){
+				System.out.print("Enter New Id : ");
+				String id = input.next();
+				
+				st[value].id = id;
+			} else if(option == 2){
+				System.out.print("Enter New Id : ");
+				String name = input.next();
+				
+				st[value].name = name;
+			}else if(option == 3){
+				System.out.print("Enter New Id : ");
+				int prfMarks = input.nextInt();
+				
+				st[value].prfMarks = prfMarks;
+			}else if(option == 4){
+				System.out.print("Enter New Id : ");
+				int dbmsMarks = input.nextInt();
+				
+				st[value].dbmsMarks = dbmsMarks;
+			}
+		}
+	}
+
+	
 	public static void printStudent(){
 		System.out.print("============================\n");
 		for(int i=0; i<st.length; i++){
@@ -124,8 +154,10 @@ class Marks_Management{
 		addStudent();
 		printStudent();
 		int search = searchStudent();
-		//updateStudent();
+		updateStudent();
+		printStudent();
 		deleteStudent();
+		printStudent();
 		
 	}
 	
