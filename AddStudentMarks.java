@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 class AddStudent extends JFrame{
 	private JButton addBtn;
@@ -22,9 +23,21 @@ class AddStudent extends JFrame{
 		JPanel btnPanel = new JPanel();
 		btnPanel.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		addBtn = new JButton("ADD");
-		cancelBtn = new JButton("CANCEL");
+		addBtn.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				System.out.println("You Press Add Button...");
+			}
+		});
 		btnPanel.add(addBtn);
+		
+		cancelBtn = new JButton("CANCEL");
+		cancelBtn.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent evt){
+				System.out.println("You Press Cancel Button...");
+			}
+		});
 		btnPanel.add(cancelBtn);
+		
 		add("South",btnPanel);
 		 
 		 
